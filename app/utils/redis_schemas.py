@@ -11,11 +11,9 @@ def create_redis_indexes(r: redis.Redis):
     user_prefix = "user:"
     
     try:
-        # Check if the user index already exists
         r.ft(user_index_name).info()
         print(f"Index '{user_index_name}' already exists.")
     except redis.exceptions.ResponseError:
-        # Define the schema for the User index
         user_schema = (
             TagField("$.user_id", as_name="user_id"),
             TextField("$.username", as_name="username"),
@@ -23,7 +21,6 @@ def create_redis_indexes(r: redis.Redis):
             NumericField("$.age", as_name="age"),
             TagField("$.location", as_name="location")
         )
-        # Define the index with a specific key prefix and type JSON
         definition = IndexDefinition(
             prefix=[user_prefix],
             index_type=IndexType.JSON
@@ -36,17 +33,16 @@ def create_redis_indexes(r: redis.Redis):
     item_prefix = "item:"
 
     try:
-        # Check if the item index already exists
         r.ft(item_index_name).info()
         print(f"Index '{item_index_name}' already exists.")
     except redis.exceptions.ResponseError:
-        # Define the schema for the Item index
         item_schema = (
             TagField("$.item_id", as_name="item_id"),
             TextField("$.title", as_name="title"),
             TagField("$.category", as_name="category"),
             TextField("$.description", as_name="description"),
-            TagField("$.tags", as_name="tags")
+            TagField("$.tags", as_name="tags"),
+            NumericField("$.created_at", as_name="created_at") 
         )
         definition = IndexDefinition(
             prefix=[item_prefix],

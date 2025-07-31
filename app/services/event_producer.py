@@ -43,14 +43,22 @@ class EventProducer:
         
         print("Pre-populating Redis with initial data...")
         for user in users:
-            # The path '$' is for creating the top-level object
+            # We convert datetime objects to Unix timestamps for Redis
+            user_data = user.model_dump()
+            user_data['signup_date'] = int(user_data['signup_date'].timestamp())
+            user_data['last_login'] = int(user_data['last_login'].timestamp())
+            
             user_key = f"user:{user.user_id}"
-            self.redis_client.json().set(user_key, '$', json.loads(user.model_dump_json()))
+            self.redis_client.json().set(user_key, '$', user_data)
             print(f"  > Created user: {user_key}")
 
         for item in items:
+            # We convert datetime objects to Unix timestamps for Redis
+            item_data = item.model_dump()
+            item_data['created_at'] = int(item_data['created_at'].timestamp())
+            
             item_key = f"item:{item.item_id}"
-            self.redis_client.json().set(item_key, '$', json.loads(item.model_dump_json()))
+            self.redis_client.json().set(item_key, '$', item_data)
             print(f"  > Created item: {item_key}")
 
         print("Pre-population complete.")
