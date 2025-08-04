@@ -1,10 +1,14 @@
 import json
 import redis
+import struct
+import base64
 from redis.commands.search.query import Query
+from redis.commands.search.field import TagField, TextField, NumericField, VectorField
 from collections import Counter
 from typing import List, Dict, Set
-from app.models.data_models import Item
+from app.models.data_models import Item, ItemWithScore
 from datetime import datetime
+from vectorizer import get_embedding, VECTOR_DIMENSION
 
 class RecommenderService:
     def __init__(self):
@@ -15,12 +19,11 @@ class RecommenderService:
         except redis.ConnectionError as e:
             print(f"❌ Failed to connect to Redis: {e}")
             raise
+        
+        self.item_idx_name = "item_idx"
+        self.user_idx_name = "user_idx"
 
     def get_user_recent_items(self, user_id: str, limit: int = 20) -> Set[str]:
-        """
-        Fetches a user's most recent interactions from their Redis Stream and
-        returns a set of unique item IDs.
-        """
         stream_key = f"user_history:{user_id}"
         recent_events = self.redis_client.xrevrange(stream_key, count=limit)
         
@@ -31,12 +34,10 @@ class RecommenderService:
         return recent_items
 
     def get_all_user_ids(self) -> List[str]:
-        """Fetches all user keys from Redis."""
         user_keys = self.redis_client.keys("user:*")
         return [key.split(':')[1] for key in user_keys]
 
     def jaccard_similarity(self, set1: Set, set2: Set) -> float:
-        """Computes Jaccard similarity between two sets."""
         if not set1 or not set2:
             return 0.0
         intersection = len(set1.intersection(set2))
@@ -44,11 +45,6 @@ class RecommenderService:
         return intersection / union if union > 0 else 0.0
 
     def get_collaborative_recommendations(self, user_id: str, limit: int = 5) -> List[Item]:
-        """
-        Generates recommendations based on collaborative filtering.
-        Logic: Find users most similar to the target user, then recommend
-               items from their history that the target user hasn't seen.
-        """
         target_user_items = self.get_user_recent_items(user_id)
         
         if not target_user_items:
@@ -88,23 +84,13 @@ class RecommenderService:
         
         recommendations = []
         for item_id in list(recommended_item_ids)[:limit]:
-            item_key = f"item:{item_id}"
-            try:
-                item_data_json = self.redis_client.json().get(item_key)
-                if item_data_json:
-                    item_data_dict = json.loads(item_data_json)
-                    recommendations.append(Item.model_validate(item_data_dict))
-            except Exception:
-                pass
+            item_data = self._get_item_data(item_id)
+            if item_data:
+                recommendations.append(Item.model_validate(item_data))
         
         return recommendations
 
-    def get_recommended_items(self, user_id: str, limit: int = 5) -> List[Item]:
-        """
-        Generates recommendations based on a user's recent item interactions.
-        Logic: Find the most common category from a user's recent history,
-               then recommend other popular items from that category.
-        """
+    def get_category_recommendations(self, user_id: str, limit: int = 5) -> List[Item]:
         recent_item_ids = self.get_user_recent_items(user_id)
         if not recent_item_ids:
             print("No recent history found for this user.")
@@ -130,13 +116,14 @@ class RecommenderService:
             Query(f"@category:{{{most_common_category}}}")
             .return_field('$.item_id', as_field='item_id')
             .return_field('$.title', as_field='title')
+            .return_field('$.description', as_field='description')
             .return_field('$.category', as_field='category')
             .return_field('$.created_at', as_field='created_at')
             .sort_by('created_at', asc=False)
             .paging(0, limit)
         )
         
-        search_results = self.redis_client.ft('idx:items').search(query)
+        search_results = self.redis_client.ft(self.item_idx_name).search(query)
         
         recommendations = []
         for doc in search_results.docs:
@@ -145,8 +132,58 @@ class RecommenderService:
                 recommendations.append(Item(
                     item_id=item_id,
                     title=doc.title,
+                    description=doc.description,
                     category=doc.category,
                     created_at=datetime.fromtimestamp(int(doc.created_at))
                 ))
         
         return recommendations
+    
+    def get_semantic_recommendations(self, query_text: str, user_id: str, limit: int = 5) -> List[ItemWithScore]:
+        print(f"Performing semantic search for query: '{query_text}'")
+        
+        query_embedding_str = get_embedding(query_text)
+        query_embedding_bytes = base64.b64decode(query_embedding_str)
+        
+        query = (
+            Query(f"(@embedding:[VECTOR_RANGE $distance_metric $limit @embedding_vector])=>{{$YIELD_DISTANCE_AS: score}}")
+            .return_field('$.item_id', as_field='item_id')
+            .return_field('$.title', as_field='title')
+            .return_field('$.description', as_field='description')
+            .return_field('$.category', as_field='category')
+            .return_field('score')
+            .sort_by('score', asc=True)
+            .paging(0, limit)
+        )
+
+        query_params = {
+            "embedding_vector": query_embedding_bytes,
+            "distance_metric": "COSINE",
+            "limit": limit
+        }
+        
+        search_results = self.redis_client.ft(self.item_idx_name).search(query, query_params)
+        
+        recommendations = []
+        user_recent_items = self.get_user_recent_items(user_id)
+        
+        for doc in search_results.docs:
+            if doc.item_id not in user_recent_items:
+                recommendations.append(ItemWithScore(
+                    item_id=doc.item_id,
+                    title=doc.title,
+                    description=doc.description,
+                    category=doc.category,
+                    score=float(doc.score)
+                ))
+                
+        return recommendations
+
+    def _get_item_data(self, item_id: str):
+        item_key = f"item:{item_id}"
+        try:
+            item_data_json = self.redis_client.json().get(item_key)
+            if item_data_json:
+                return json.loads(item_data_json)
+        except Exception:
+            return None

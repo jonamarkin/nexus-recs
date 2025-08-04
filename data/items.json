@@ -1,107 +1,302 @@
 [
-  {
-    "item_id": "itemA",
-    "title": "The Matrix",
-    "category": "movie",
-    "description": "A computer hacker learns from mysterious rebels about the true nature of his reality.",
-    "tags": ["sci-fi", "action", "cyberpunk"]
-  },
-  {
-    "item_id": "itemB",
-    "title": "Inception",
-    "category": "movie",
-    "description": "A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
-    "tags": ["sci-fi", "thriller", "heist"]
-  },
-  {
-    "item_id": "itemC",
-    "title": "Dune",
-    "category": "movie",
-    "description": "Paul Atreides, a brilliant and gifted young man born into a great destiny beyond his understanding, must travel to the most dangerous planet in the universe to ensure the future of his family and his people.",
-    "tags": ["sci-fi", "adventure", "epic"]
-  },
-  {
-    "item_id": "itemD",
-    "title": "Foundation",
-    "category": "series",
-    "description": "A saga of humanity scattered on planets throughout the galaxy all living under the rule of the Galactic Empire.",
-    "tags": ["sci-fi", "space opera", "drama"]
-  },
-  {
-    "item_id": "itemE",
-    "title": "The Last of Us",
-    "category": "series",
-    "description": "After a global pandemic destroys civilization, a hardened survivor takes charge of a 14-year-old girl.",
-    "tags": ["post-apocalyptic", "drama", "survival"]
-  },
-  {
-    "item_id": "itemF",
-    "title": "The Mandalorian",
-    "category": "series",
-    "description": "The travels of a lone bounty hunter in the outer reaches of the galaxy, far from the authority of the New Republic.",
-    "tags": ["sci-fi", "western", "star wars"]
-  },
-  {
-    "item_id": "itemG",
-    "title": "Avatar",
-    "category": "movie",
-    "description": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following orders and protecting the world he feels is his home.",
-    "tags": ["sci-fi", "fantasy", "adventure"]
-  },
-  {
-    "item_id": "itemH",
-    "title": "Interstellar",
-    "category": "movie",
-    "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
-    "tags": ["sci-fi", "space", "drama"]
-  },
-  {
-    "item_id": "itemI",
-    "title": "The Witcher",
-    "category": "series",
-    "description": "Geralt of Rivia, a mutated monster-hunter for hire, journeys toward his destiny in a turbulent world where people often prove more wicked than beasts.",
-    "tags": ["fantasy", "adventure", "action"]
-  },
-  {
-    "item_id": "itemJ",
-    "title": "Stranger Things",
-    "category": "series",
-    "description": "When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces, and one strange little girl.",
-    "tags": ["sci-fi", "horror", "80s"]
-  },
-  {
-    "item_id": "itemK",
-    "title": "The Expanse",
-    "category": "series",
-    "description": "In the near future, two strangers' lives collide in a solar system torn apart by political divides.",
-    "tags": ["sci-fi", "space", "thriller"]
-  },
-  {
-    "item_id": "itemL",
-    "title": "The Crown",
-    "category": "series",
-    "description": "Follows the political rivalries and romance of Queen Elizabeth II's reign and the events that shaped the second half of the 20th century.",
-    "tags": ["historical", "drama", "royal"]
-  },
-  {
-    "item_id": "itemM",
-    "title": "Breaking Bad",
-    "category": "series",
-    "description": "A high school chemistry teacher diagnosed with lung cancer teams up with his former student to secure his family's future by manufacturing and selling crystal meth.",
-    "tags": ["crime", "drama", "thriller"]
-  },
-  {
-    "item_id": "itemN",
-    "title": "The Office",
-    "category": "series",
-    "description": "A mockumentary on a group of typical office workers, where the workday consists of ego clashes, inappropriate behavior, and tedium.",
-    "tags": ["comedy", "mockumentary", "sitcom"]
-  },
-  {
-    "item_id": "itemO",
-    "title": "Parasite",
-    "category": "movie",
-    "description": "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
-    "tags": ["thriller", "drama", "black comedy"]
-  }
+    {
+        "item_id": "9d523374-006d-4928-8c1a-9706aef4c2bd",
+        "title": "Toward Deal",
+        "description": "Road watch wrong to middle car can authority establish late together walk none guy.",
+        "category": "art"
+    },
+    {
+        "item_id": "5fcc6a28-6e89-4d3f-9495-367d0fa3c842",
+        "title": "Religious Offer",
+        "description": "Current near certain show friend force leave.",
+        "category": "game"
+    },
+    {
+        "item_id": "7933ccd1-0748-4e90-b622-541d273fdefd",
+        "title": "Group Cell",
+        "description": "Next collection get impact month end smile plan page however person.",
+        "category": "gadget"
+    },
+    {
+        "item_id": "161c1d99-c405-4af2-98fe-e75c3f54d5a0",
+        "title": "Detail officer like ready think",
+        "description": "Support but relationship adult along article something. Big return increase million couple.",
+        "category": "movie"
+    },
+    {
+        "item_id": "b31b66d8-fbae-420e-b373-2527fe7fcb08",
+        "title": "Cost Court",
+        "description": "Buy power brother religious cause region unit. Buy go today read program share artist truth.",
+        "category": "game"
+    },
+    {
+        "item_id": "e258743a-16f4-45ee-876b-52e5e8fabbc5",
+        "title": "Win according",
+        "description": "Deal several design be adult.",
+        "category": "movie"
+    },
+    {
+        "item_id": "5f641541-8816-4f6a-95ae-ff07929965d2",
+        "title": "Everybody Admit",
+        "description": "Player agency understand professional right else raise compare.",
+        "category": "gadget"
+    },
+    {
+        "item_id": "5c86da75-b3b7-4f0d-bd09-dc6b2756c5e6",
+        "title": "Meeting Air",
+        "description": "Beat above democratic condition since way later official parent nothing buy draw network.",
+        "category": "apparel"
+    },
+    {
+        "item_id": "cae4399f-d581-486f-aba3-04e249f72c4b",
+        "title": "Minute team which",
+        "description": "Raise arrive voice break hundred mean. Sure role mind put break begin watch. International heart sometimes threat. Finish sort far significant bill.",
+        "category": "movie"
+    },
+    {
+        "item_id": "0167803b-d5b5-4480-8433-6dc714499545",
+        "title": "Mother Very",
+        "description": "Democratic black word eight rise.",
+        "category": "game"
+    },
+    {
+        "item_id": "67c7f0ba-32e6-43cb-842d-3f847ff7b9eb",
+        "title": "Ready Start",
+        "description": "Growth main candidate father statement team hope evening and try off whether.",
+        "category": "food"
+    },
+    {
+        "item_id": "26abea88-b8ac-4dbf-9861-65570a00453a",
+        "title": "Risk treatment impact",
+        "description": "None all with control least sister. Many bank billion officer adult.",
+        "category": "movie"
+    },
+    {
+        "item_id": "f9eb34ce-62a1-4714-ac8d-82b570d2a51c",
+        "title": "Plan Possible",
+        "description": "News follow yourself discussion vote sister region matter light table.",
+        "category": "travel"
+    },
+    {
+        "item_id": "93e98390-15cd-42a2-98db-83c794b0a19f",
+        "title": "Body Large",
+        "description": "Source when see five medical nation central author memory also.",
+        "category": "apparel"
+    },
+    {
+        "item_id": "cdf1445a-8073-4455-86d9-3422a621fe42",
+        "title": "Candidate Blood",
+        "description": "Mind item tough bed than oil garden property lose hand student rich believe.",
+        "category": "apparel"
+    },
+    {
+        "item_id": "c5bb199d-7b3f-410e-a46a-40c3d79c1194",
+        "title": "Give Relate",
+        "description": "Well notice lay business need model son evening long alone ten.",
+        "category": "art"
+    },
+    {
+        "item_id": "2a0a0b93-6588-4a3a-a390-cf3c6d9c9f6b",
+        "title": "Give order number war how",
+        "description": "Involve career eat church positive. Play explain answer.",
+        "category": "movie"
+    },
+    {
+        "item_id": "d9cddeb9-9501-46f7-8846-8e78347adc6a",
+        "title": "Book training nature already as though",
+        "description": "Great individual both baby write especially. Development recognize ten station now require already.",
+        "category": "series"
+    },
+    {
+        "item_id": "e4d7213d-b965-4a5e-acf2-b9fc6edb732f",
+        "title": "Few any suggest too course",
+        "description": "Article news coach check cost special. Visit space official blue story.",
+        "category": "series"
+    },
+    {
+        "item_id": "d39a8b52-d712-4ed6-8559-461bbe19bf23",
+        "title": "Progressive interactive challenge",
+        "description": "Life already own amount. Each opportunity five open. Family land ok will company.\nSit lot member either pull summer high network. Customer three age marriage window continue.",
+        "category": "book"
+    },
+    {
+        "item_id": "5d83bd44-06b1-4c22-a4d9-65271574ea7c",
+        "title": "Senior Professor",
+        "description": "Matter others deal leave specific without article station event before.",
+        "category": "travel"
+    },
+    {
+        "item_id": "d9bb06d7-8b1b-426c-9e7b-371f196e5057",
+        "title": "Enhanced radical emulation",
+        "description": "Market develop top enter. Idea play budget score effect hour.\nUsually whatever individual third interest. State wall recent north strategy why send.",
+        "category": "book"
+    },
+    {
+        "item_id": "d29678ce-79ee-4237-886a-13c4b0aadea0",
+        "title": "Expect Song",
+        "description": "Economy employee read man stuff charge reality.",
+        "category": "game"
+    },
+    {
+        "item_id": "ad3ecfd4-14b6-41d0-b4e4-5fd2c914e6c6",
+        "title": "Research Fly",
+        "description": "System industry realize very less civil.",
+        "category": "travel"
+    },
+    {
+        "item_id": "d6e4098e-203f-448e-87aa-ef8deddbbb9e",
+        "title": "Concern This",
+        "description": "Form store between old development huge approach sound fact boy behavior.",
+        "category": "art"
+    },
+    {
+        "item_id": "e860c5a9-c6d9-4011-9388-080b6e60de96",
+        "title": "Soon Direction",
+        "description": "Which production assume decision image attention official also area natural majority.",
+        "category": "gadget"
+    },
+    {
+        "item_id": "ad40c736-94d5-45ac-88bc-744537dbd2c0",
+        "title": "Grass-roots explicit budgetary management",
+        "description": "An album by Nathan Brock released in 1971.",
+        "category": "music"
+    },
+    {
+        "item_id": "cdddf1b1-7122-4346-99aa-0060ebda7692",
+        "title": "Recognize Forget",
+        "description": "Poor pick administration community central five under suffer management even.",
+        "category": "travel"
+    },
+    {
+        "item_id": "e36390ba-f9ba-4744-853f-5dbe42b98d97",
+        "title": "Total Find",
+        "description": "Central energy article able.",
+        "category": "game"
+    },
+    {
+        "item_id": "55ca95a3-6e5b-4afb-a0c6-40da54d88605",
+        "title": "Innovative attitude-oriented archive",
+        "description": "An album by Amanda Walsh released in 2020.",
+        "category": "music"
+    },
+    {
+        "item_id": "1cada632-5799-4bf2-a465-e9cda946e162",
+        "title": "Devolved dynamic help-desk",
+        "description": "Get news increase sea institution weight. Chair among audience talk perform some smile. Institution if mother four factor explain American staff.",
+        "category": "book"
+    },
+    {
+        "item_id": "e8cfb45c-2ab0-41fe-bc3a-612e88013c70",
+        "title": "This whose how source",
+        "description": "Major color model financial age total. Well option people song. Case fire when visit. Available entire adult worker dog throughout interesting. Early school buy nature.",
+        "category": "series"
+    },
+    {
+        "item_id": "672044c4-e4a0-47b2-b561-56e725fc2f46",
+        "title": "International Truth",
+        "description": "Trouble knowledge evidence up practice someone treatment assume space together development.",
+        "category": "apparel"
+    },
+    {
+        "item_id": "cc2bddf4-8438-49bf-ad74-6e6080f2f4c3",
+        "title": "Explain Watch",
+        "description": "Lawyer plant act especially house identify.",
+        "category": "game"
+    },
+    {
+        "item_id": "7e99d49d-57f9-494a-93e8-facba18dcb79",
+        "title": "Never Discussion",
+        "description": "Unit among paper director operation turn.",
+        "category": "apparel"
+    },
+    {
+        "item_id": "d8320ab4-0079-4f46-965a-3c19bba1da4d",
+        "title": "Profound systemic open system",
+        "description": "An album by Lindsey Jackson released in 2004.",
+        "category": "music"
+    },
+    {
+        "item_id": "bafb860c-0baa-4e42-9623-1bc0d9bd54ec",
+        "title": "Face-to-face didactic leverage",
+        "description": "An album by David Riddle released in 1974.",
+        "category": "music"
+    },
+    {
+        "item_id": "690b0f34-83df-412b-a62c-a00ba7b816f4",
+        "title": "Save final miss pay",
+        "description": "Structure support benefit suggest turn police.",
+        "category": "movie"
+    },
+    {
+        "item_id": "0fa20bd0-699a-4ba0-835e-4367cd56cf14",
+        "title": "Go Performance",
+        "description": "Start whatever movement art seek marriage design other.",
+        "category": "art"
+    },
+    {
+        "item_id": "d6b5ca07-7c58-4441-9b79-b584bd3167b3",
+        "title": "Wonder Explain",
+        "description": "Speak oil safe voice protect admit why almost within attorney respond.",
+        "category": "apparel"
+    },
+    {
+        "item_id": "778a2dd0-6d43-4266-8047-f0c7fb738f88",
+        "title": "Choice Laugh",
+        "description": "Range quite light commercial huge perform.",
+        "category": "apparel"
+    },
+    {
+        "item_id": "9e73ab37-6a0c-4805-b3e9-da91cbe0c0d9",
+        "title": "Programmable methodical framework",
+        "description": "Bad candidate include. Girl power executive debate over.",
+        "category": "book"
+    },
+    {
+        "item_id": "cbe1f859-d076-483e-8fa9-97bb99469570",
+        "title": "Rather Little",
+        "description": "Purpose end outside state voice answer.",
+        "category": "gadget"
+    },
+    {
+        "item_id": "78f7a3f6-2d7d-4adf-8891-288aec9863a9",
+        "title": "Pressure Service",
+        "description": "Option citizen thing fear bed type story.",
+        "category": "apparel"
+    },
+    {
+        "item_id": "8da77476-4aaa-4464-8ed0-34e16ab423c5",
+        "title": "Human Candidate",
+        "description": "Per direction bit most international space wife action drop west table.",
+        "category": "food"
+    },
+    {
+        "item_id": "898ffc6f-fbea-4df2-8ab5-fa9ba78a8640",
+        "title": "Adaptive content-based workforce",
+        "description": "An album by Ashley Johnston released in 1996.",
+        "category": "music"
+    },
+    {
+        "item_id": "aed43418-efe8-4e0a-aa3c-bedc9d3c74f1",
+        "title": "Base Shoulder",
+        "description": "Move yet avoid they so wonder.",
+        "category": "game"
+    },
+    {
+        "item_id": "8eee5565-a32c-48c3-a220-881a13c1f97f",
+        "title": "Centralized heuristic challenge",
+        "description": "Perhaps image entire exactly institution camera impact. Of and imagine environmental move physical sit. Hard prove car.",
+        "category": "book"
+    },
+    {
+        "item_id": "96a74071-566a-4a16-b52f-4973dcb15a0b",
+        "title": "Space begin face art seem",
+        "description": "I either wonder her reflect. Contain medical above law party.",
+        "category": "movie"
+    },
+    {
+        "item_id": "f00ca03d-b818-4ff9-bec2-cdf91ccc3efb",
+        "title": "Open-architected real-time neural-net",
+        "description": "Language relationship almost laugh case trade send our. Check bank point forget toward peace.\nBlack thank effort better try great. World coach make along leave identify.",
+        "category": "book"
+    }
 ]

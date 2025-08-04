@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Recommendation Engine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Nexus Recommendation Engine</h1>
+    </header>
+    <main>
+        <section class="controls">
+            <label for="userId">User ID:</label>
+            <input type="text" id="userId" value="user1" placeholder="e.g., user1">
+            <button id="categoryBtn">Get Category-based Recs</button>
+            <button id="collaborativeBtn">Get Collaborative Recs</button>
+        </section>
+        <section class="results">
+            <h2>Recommendations</h2>
+            <div id="recommendationsList">
+                <p>Enter a User ID and click a button to get recommendations.</p>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
