@@ -1,0 +1,107 @@
+[
+  {
+    "item_id": "itemA",
+    "title": "The Matrix",
+    "category": "movie",
+    "description": "A computer hacker learns from mysterious rebels about the true nature of his reality.",
+    "tags": ["sci-fi", "action", "cyberpunk"]
+  },
+  {
+    "item_id": "itemB",
+    "title": "Inception",
+    "category": "movie",
+    "description": "A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+    "tags": ["sci-fi", "thriller", "heist"]
+  },
+  {
+    "item_id": "itemC",
+    "title": "Dune",
+    "category": "movie",
+    "description": "Paul Atreides, a brilliant and gifted young man born into a great destiny beyond his understanding, must travel to the most dangerous planet in the universe to ensure the future of his family and his people.",
+    "tags": ["sci-fi", "adventure", "epic"]
+  },
+  {
+    "item_id": "itemD",
+    "title": "Foundation",
+    "category": "series",
+    "description": "A saga of humanity scattered on planets throughout the galaxy all living under the rule of the Galactic Empire.",
+    "tags": ["sci-fi", "space opera", "drama"]
+  },
+  {
+    "item_id": "itemE",
+    "title": "The Last of Us",
+    "category": "series",
+    "description": "After a global pandemic destroys civilization, a hardened survivor takes charge of a 14-year-old girl.",
+    "tags": ["post-apocalyptic", "drama", "survival"]
+  },
+  {
+    "item_id": "itemF",
+    "title": "The Mandalorian",
+    "category": "series",
+    "description": "The travels of a lone bounty hunter in the outer reaches of the galaxy, far from the authority of the New Republic.",
+    "tags": ["sci-fi", "western", "star wars"]
+  },
+  {
+    "item_id": "itemG",
+    "title": "Avatar",
+    "category": "movie",
+    "description": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following orders and protecting the world he feels is his home.",
+    "tags": ["sci-fi", "fantasy", "adventure"]
+  },
+  {
+    "item_id": "itemH",
+    "title": "Interstellar",
+    "category": "movie",
+    "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    "tags": ["sci-fi", "space", "drama"]
+  },
+  {
+    "item_id": "itemI",
+    "title": "The Witcher",
+    "category": "series",
+    "description": "Geralt of Rivia, a mutated monster-hunter for hire, journeys toward his destiny in a turbulent world where people often prove more wicked than beasts.",
+    "tags": ["fantasy", "adventure", "action"]
+  },
+  {
+    "item_id": "itemJ",
+    "title": "Stranger Things",
+    "category": "series",
+    "description": "When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces, and one strange little girl.",
+    "tags": ["sci-fi", "horror", "80s"]
+  },
+  {
+    "item_id": "itemK",
+    "title": "The Expanse",
+    "category": "series",
+    "description": "In the near future, two strangers' lives collide in a solar system torn apart by political divides.",
+    "tags": ["sci-fi", "space", "thriller"]
+  },
+  {
+    "item_id": "itemL",
+    "title": "The Crown",
+    "category": "series",
+    "description": "Follows the political rivalries and romance of Queen Elizabeth II's reign and the events that shaped the second half of the 20th century.",
+    "tags": ["historical", "drama", "royal"]
+  },
+  {
+    "item_id": "itemM",
+    "title": "Breaking Bad",
+    "category": "series",
+    "description": "A high school chemistry teacher diagnosed with lung cancer teams up with his former student to secure his family's future by manufacturing and selling crystal meth.",
+    "tags": ["crime", "drama", "thriller"]
+  },
+  {
+    "item_id": "itemN",
+    "title": "The Office",
+    "category": "series",
+    "description": "A mockumentary on a group of typical office workers, where the workday consists of ego clashes, inappropriate behavior, and tedium.",
+    "tags": ["comedy", "mockumentary", "sitcom"]
+  },
+  {
+    "item_id": "itemO",
+    "title": "Parasite",
+    "category": "movie",
+    "description": "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+    "tags": ["thriller", "drama", "black comedy"]
+  }
+]

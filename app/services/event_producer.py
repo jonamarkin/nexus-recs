@@ -4,6 +4,7 @@ import random
 import redis
 from confluent_kafka import Producer
 from datetime import datetime, timezone
+import os
 
 from app.models.data_models import User, Item, UserEvent
 
@@ -21,18 +22,30 @@ class EventProducer:
             print(f"❌ Message delivery failed: {err}")
 
     def generate_initial_data(self):
-        """Generates mock users and items for our simulation."""
+        """Generates mock users and loads items from a JSON file."""
         users = [
-            User(user_id='user1', username='alice', signup_date=datetime.now(timezone.utc), last_login=datetime.now(timezone.utc)),
-            User(user_id='user2', username='bob', signup_date=datetime.now(timezone.utc), last_login=datetime.now(timezone.utc)),
-            User(user_id='user3', username='charlie', signup_date=datetime.now(timezone.utc), last_login=datetime.now(timezone.utc)),
+            User(user_id=f'user{i}', username=f'user{i}', signup_date=datetime.now(timezone.utc), last_login=datetime.now(timezone.utc))
+            for i in range(1, 11)
         ]
-        items = [
-            Item(item_id='itemA', title='The Matrix', category='movie', created_at=datetime.now(timezone.utc)),
-            Item(item_id='itemB', title='Inception', category='movie', created_at=datetime.now(timezone.utc)),
-            Item(item_id='itemC', title='Dune', category='movie', created_at=datetime.now(timezone.utc)),
-            Item(item_id='itemD', title='Foundation', category='series', created_at=datetime.now(timezone.utc)),
-        ]
+        
+        # Load items from a JSON file
+        items = []
+        try:
+            with open('data/items.json', 'r') as f:
+                item_data = json.load(f)
+                for item_dict in item_data:
+                    # We need to add the 'created_at' field for the Pydantic model
+                    item_dict['created_at'] = datetime.now(timezone.utc)
+                    items.append(Item(**item_dict))
+            print("Items loaded from data/items.json.")
+        except FileNotFoundError:
+            print("Error: 'data/items.json' not found. Generating default items.")
+            items = [
+                Item(item_id='itemA', title='The Matrix', category='movie', created_at=datetime.now(timezone.utc)),
+                Item(item_id='itemB', title='Inception', category='movie', created_at=datetime.now(timezone.utc)),
+                Item(item_id='itemC', title='Dune', category='movie', created_at=datetime.now(timezone.utc)),
+            ]
+        
         return users, items
 
     def pre_populate_redis(self):
@@ -43,7 +56,6 @@ class EventProducer:
         
         print("Pre-populating Redis with initial data...")
         for user in users:
-            # We convert datetime objects to Unix timestamps for Redis
             user_data = user.model_dump()
             user_data['signup_date'] = int(user_data['signup_date'].timestamp())
             user_data['last_login'] = int(user_data['last_login'].timestamp())
@@ -53,7 +65,6 @@ class EventProducer:
             print(f"  > Created user: {user_key}")
 
         for item in items:
-            # We convert datetime objects to Unix timestamps for Redis
             item_data = item.model_dump()
             item_data['created_at'] = int(item_data['created_at'].timestamp())
             
@@ -62,6 +73,32 @@ class EventProducer:
             print(f"  > Created item: {item_key}")
 
         print("Pre-population complete.")
+
+    # NEW: Hard-coded function for testing collaborative filtering
+    def populate_streams_for_test(self):
+        print("Populating streams with hard-coded data for collaborative filtering test...")
+        # Clear existing streams to ensure a clean state
+        all_stream_keys = self.redis_client.keys("user_history:*")
+        if all_stream_keys:
+            self.redis_client.delete(*all_stream_keys)
+        
+        # User 1 views 3 specific items
+        user1_events = ['itemA', 'itemB', 'itemC']
+        for item_id in user1_events:
+            event = UserEvent(user_id='user1', item_id=item_id, event_type='view', timestamp=datetime.now(timezone.utc))
+            event_dict = event.model_dump()
+            event_dict['timestamp'] = int(event_dict['timestamp'].timestamp()) # CORRECTED: Convert to timestamp
+            self.redis_client.xadd('user_history:user1', event_dict, maxlen=100)
+            
+        # User 2 views 2 of the same items, plus one unique item
+        user2_events = ['itemB', 'itemC', 'itemJ']
+        for item_id in user2_events:
+            event = UserEvent(user_id='user2', item_id=item_id, event_type='view', timestamp=datetime.now(timezone.utc))
+            event_dict = event.model_dump()
+            event_dict['timestamp'] = int(event_dict['timestamp'].timestamp()) # CORRECTED: Convert to timestamp
+            self.redis_client.xadd('user_history:user2', event_dict, maxlen=100)
+            
+        print("Test streams populated. 'user1' and 'user2' are similar, and 'itemJ' should be recommended to 'user1'.")
 
     def simulate_events(self):
         """Simulates a stream of user events and sends them to Kafka."""
@@ -89,6 +126,10 @@ class EventProducer:
 if __name__ == '__main__':
     producer = EventProducer(kafka_topic='user_events')
     producer.pre_populate_redis()
+    
+    # We will only run this test function for a moment to set the state
+    producer.populate_streams_for_test()
+    
     print("\nStarting event simulation. Press Ctrl+C to stop.")
     try:
         producer.simulate_events()
